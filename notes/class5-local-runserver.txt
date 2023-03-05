@@ -1,0 +1,8 @@
+Once our project is created we can start it with the following cmd:
+python manage.py runserver <portnumber(default = 8000)>
+
+then we will have our project deployed on localhost , so to access to it, on the navigator use the following direcction:
+
+127.0.0.1:<portnumber> 
+
+it will display a default django layout 

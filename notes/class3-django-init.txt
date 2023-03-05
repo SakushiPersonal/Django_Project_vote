@@ -1,0 +1,15 @@
+FIrst we create our project directory where we will be creating our env and our git repository.
+
+On the same directory we activate our venv:
+
+    Windows: .\venv\Scripts\activate
+    Linux: Source venv/bin/activate
+
+Then, with our venv activated, we can start installing our libraries
+
+    pip install django
+
+Then to inizialize our Django PRoject:
+
+    django-admin startproject <app name>
+

@@ -1,0 +1,2 @@
+To create new apps in our project, just use the following cmd:
+    py manage.py startapp <appname>
