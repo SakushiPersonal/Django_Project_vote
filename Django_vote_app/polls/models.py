@@ -8,7 +8,7 @@ from django.utils import timezone
 class Question(models.Model):
 #not neded to define id, Django creates it automatically
     question_text = models.CharField(max_length=300)
-    pub_date = models.DateTimeField('published date')
+    pub_date = models.DateTimeField('published date', auto_now_add=True)
 
     def __str__(self) -> str:
         return self.question_text
