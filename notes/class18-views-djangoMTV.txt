@@ -1,0 +1,17 @@
+Diferencia entre MVC y MTV 😮
+Muy similar a MVC (Modelo, vista, controlador) donde:
+.
+Modelo - Hace referencia a todo lo que tiene que ver con bases de datos.
+
+Vista - Con la parte visual.
+
+Controlador - Con toda la parte lógica.
+
+.
+En Django siendo MTV 😃
+
+Modelo - Hace referencia a todo lo que tiene que ver con bases de datos (En este caso Django hace demasiada alusión a su nombre donde las bases de datos quedan implícitas y manejamos todo con el ORM)
+
+Template - En este caso no debemos confundir el View del MTV con el del MVC puesto en que en Django no hace referencia a lo visual, template si hace alusión con la parte visual de las Web Apps con Django.
+
+View - Todo lo relacionado con la lógica es aquí donde entra el tema de las vistas genéricas y demás (Que si solo nos especializamos en el back con Django es lo que mas utilizaremos)

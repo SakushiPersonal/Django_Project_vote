@@ -1,0 +1,4 @@
+On console:
+    python manage.py createsuperuser
+
+**WARNING! : Do NOT let know this user to anyone! 
