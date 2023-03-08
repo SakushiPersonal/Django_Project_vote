@@ -1,0 +1,19 @@
+¿Qué son los tests?
+Los tests son funciones que nos ayudan a que nuestro código opere correctamente.
+¿Para qué hacer tests?
+
+Encontrar errores de código:
+Cuando tu código crece en cientos de líneas o incluso miles, el que sufra un error puede ser catastrófico (puede llevar varios días solucionarlo e incluso semanas). Sirve para encontrar errores futuros que a simple vista no seríamos capaces de ver (son funciones que trabajan sobre nuestras funciones principales de código).
+Nos inclina a ser profesionales:
+Los tests le dan un aspecto profesional e incita a que incluso las personas expertas quieran contribuir en nuestro proyecto (la demanda de desarrollo crece aún más y la oferta sigue estancada en un punto).
+Nos permite trabajar mejor en equipo, ya que es muy probable que cuando se lea nuestro código no se entienda por completo y que simplemente se haga una contribución que se crea pertinente (así sabe si la contribución fue adecuada).
+TDD:
+Antes de escribir la pieza de código, lo mejor es hacer el test.
+
+
+TDD o Test-Driven Development (desarrollo dirigido por tests) es una práctica de programación que consiste en escribir primero las pruebas (generalmente unitarias), después escribir el código fuente que pase la prueba satisfactoriamente y, por último, refactorizar el código escrito.
+
+
+***Para crear un Test en Django debemos hacerlo en el archivo test de la app a la que correspondan los modelos o Vistas que queremos testear.
+***Una vez creado nuestro test podemos hecharlso a andar por consola a travez del cmd:
+    python manage.py test <appname>
