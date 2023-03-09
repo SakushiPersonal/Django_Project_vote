@@ -17,3 +17,11 @@ TDD o Test-Driven Development (desarrollo dirigido por tests) es una práctica d
 ***Para crear un Test en Django debemos hacerlo en el archivo test de la app a la que correspondan los modelos o Vistas que queremos testear.
 ***Una vez creado nuestro test podemos hecharlso a andar por consola a travez del cmd:
     python manage.py test <appname>
+
+
+>>>>PASOS A SEGUIR PARA LOS TESTS:
+    1 Identificamos un problema
+    2 Creamos un test
+    3 Corremos un test
+    4 Arreglamos el problema
+    5 Corremos el test
