@@ -25,3 +25,8 @@ TDD o Test-Driven Development (desarrollo dirigido por tests) es una práctica d
     3 Corremos un test
     4 Arreglamos el problema
     5 Corremos el test
+
+>>>ADVICES:
+    * More tests is better than less
+    * Create a class for each model or view being tested
+    * Establish the most possible descriptives names for each test method.

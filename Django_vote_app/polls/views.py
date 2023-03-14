@@ -34,6 +34,10 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
 
+    def get_queryset(self):
+        '''Return return just already published questions'''
+        return Question.objects.filter(pub_date__lte=timezone.now())
+
 class ResultView(DetailView):
     template_name = 'polls/results.html'
 
