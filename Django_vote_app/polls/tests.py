@@ -16,6 +16,17 @@ def create_question(text, days):
     time = (timezone.now() + datetime.timedelta(days=days))
     return Question.objects.create(question_text=text, pub_date=time)
 
+
+def create_choice(pk, choice_text, votes=0):
+    """
+    Create a choice that have the pk(primary key is a number) of a specific question
+    with the given "choice_text" and with the given "votes"(votes starts in zero)
+    """
+    question = Question.objects.get(pk=pk)
+    return question.choice_set.create(choice_text=choice_text, votes=votes)
+
+
+
 class QuestionModelTests(TestCase):
 
     def setUp(self) -> None:
@@ -110,6 +121,27 @@ class QuestionIndexViewTests(TestCase):
         self.assertQuerysetEqual(response.context['latest_question_list'], [])
 
 
+    def test_question_without_choices(self):
+        """
+        Quetions have no choices aren't displayed in the index view
+        """
+        question = create_question("Cuál es tu curso favorito?", days=-10)
+        response = self.client.get(reverse("polls:index"))
+        self.assertQuerysetEqual(response.context["latest_question_list"], [])
+
+
+
+    def test_question_with_choices(self):
+        """
+        Question with choices are displayed in the index view
+        """
+        question = create_question("Cuál es tu curso favorito?", days=-10)
+        choice1 = create_choice(pk=question.id, choice_text="Curso Básico de Django", votes=0)
+        choice2 = create_choice(pk=question.id, choice_text="Curso de Introducción a la Nube con Azure", votes=0)
+        response = self.client.get(reverse("polls:index"))
+        self.assertQuerysetEqual(response.context["latest_question_list"], [question])
+
+
 class QuestionDetailViewTests(TestCase):
     def test_future_question(self):
         """
@@ -132,3 +164,40 @@ class QuestionDetailViewTests(TestCase):
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
         
+
+
+class ResultViewTest(TestCase):
+
+    def test_with_past_question(self):
+        """
+        The result view with a pub date in the past display the 
+        question's text
+        """
+        past_question = create_question("past question", days=-15)
+        url = reverse("polls:results", args=(past_question.id,))
+        response = self.client.get(url)
+        self.assertContains(response, past_question.question_text)
+
+
+
+class ResultViewTest(TestCase):
+
+    def test_with_past_question(self):
+        """
+        The result view with a pub date in the past display the 
+        question's text
+        """
+        past_question = create_question("past question", -15)
+        url = reverse("polls:results", args=(past_question.id,))
+        response = self.client.get(url)
+        self.assertContains(response, past_question.question_text)
+
+    def test_with_future_question(self):
+        """
+        Questions with a future date aren't displayed and this return a 404 error(not found) 
+        until the date is the specified date
+        """
+        future_question = create_question("this is a future question", 30)
+        url = reverse("polls:results", args=(future_question.id,))
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 404)
