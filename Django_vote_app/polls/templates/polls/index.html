@@ -1,12 +1,36 @@
 {% load static %}
-<link rel="stylesheet" href="{%static 'polls/style.css'%}">
-{% if latest_question_list%}
-{% for question in latest_question_list %}
-<ul>
-    <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li>
-</ul>
-{% endfor %}
-{% else %}
-<p>Polls not found!</p>
 
-{% endif %}
+<DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'polls/reset.css'%}">
+    <link rel="stylesheet" href="{%static 'polls/style.css'%}">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Vote for the Best</h1>
+    </header>
+    <main>
+        {% if latest_question_list%}
+        {% for question in latest_question_list %}
+        <ul>
+            <li><a href="{% url 'polls:detail' question.id %}">{{question.question_text}}</a></li>
+        </ul>
+        {% endfor %}
+        {% else %}
+        <p>Polls not found!</p>
+
+        {% endif %}
+    </main>
+    <footer>
+        <a href="//platzi.com">Platzi</a>
+        <a href="#">Contact</a>
+        <a href="#">Privacy Policies</a>
+        <a href="#">Terms and conditions</a>
+    </footer>
+</body>
+</html>
